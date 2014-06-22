@@ -18,7 +18,7 @@ public class Constants {
 	
 	public static final String
 		APP_NAME = "ownCloud Easy DAV",
-		APP_VERSION = "1.0/beta",
+		APP_VERSION = "1.0-beta",
 		WEB_URL_HELP = "https://github.com/bodeme/owncloud_easy_dav",
 		SETTING_DISABLE_COMPRESSION = "disable_compression",
 		SETTING_NETWORK_LOGGING = "network_logging";

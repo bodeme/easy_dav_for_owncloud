@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		String info = getString(R.string.html_main_info)
 				.replace("[[app_name]]", getString(R.string.app_name))
-				.replace("[[version]]", "" + Constants.APP_VERSION)
+				.replace("[[app_version]]", "" + Constants.APP_VERSION)
 				.replace("[[service_name]]", getString(R.string.service_name));
 			
 		TextView tvInfo = (TextView)findViewById(R.id.text_info);
