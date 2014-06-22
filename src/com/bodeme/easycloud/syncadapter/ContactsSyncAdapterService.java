@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package at.bitfire.davdroid.syncadapter;
+package com.bodeme.easycloud.syncadapter;
 
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -17,21 +17,20 @@ import android.content.ContentProviderClient;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
-import android.os.RemoteException;
 import android.util.Log;
-import at.bitfire.davdroid.resource.CalDavCalendar;
-import at.bitfire.davdroid.resource.LocalCalendar;
+import at.bitfire.davdroid.resource.CardDavAddressBook;
+import at.bitfire.davdroid.resource.LocalAddressBook;
 import at.bitfire.davdroid.resource.LocalCollection;
 import at.bitfire.davdroid.resource.RemoteCollection;
 
-public class CalendarsSyncAdapterService extends Service {
-	private static SyncAdapter syncAdapter;
-	
+public class ContactsSyncAdapterService extends Service {
+	private static ContactsSyncAdapter syncAdapter;
+
 	
 	@Override
 	public void onCreate() {
 		if (syncAdapter == null)
-			syncAdapter = new SyncAdapter(getApplicationContext());
+			syncAdapter = new ContactsSyncAdapter(getApplicationContext());
 	}
 
 	@Override
@@ -42,18 +41,18 @@ public class CalendarsSyncAdapterService extends Service {
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		return syncAdapter.getSyncAdapterBinder(); 
+		return syncAdapter.getSyncAdapterBinder();
 	}
 	
 
-	private static class SyncAdapter extends DavSyncAdapter {
-		private final static String TAG = "davdroid.CalendarsSyncAdapter";
+	private static class ContactsSyncAdapter extends DavSyncAdapter {
+		private final static String TAG = "davdroid.ContactsSyncAdapter";
 
 		
-		private SyncAdapter(Context context) {
+		private ContactsSyncAdapter(Context context) {
 			super(context);
 		}
-		
+
 		@Override
 		protected Map<LocalCollection<?>, RemoteCollection<?>> getSyncPairs(Account account, ContentProviderClient provider) {
 			AccountSettings settings = new AccountSettings(getContext(), account);
@@ -61,18 +60,20 @@ public class CalendarsSyncAdapterService extends Service {
 					password = settings.getPassword();
 			boolean preemptive = settings.getPreemptiveAuth();
 
+			String addressBookURL = settings.getAddressBookURL();
+			if (addressBookURL == null)
+				return null;
+			
 			try {
-				Map<LocalCollection<?>, RemoteCollection<?>> map = new HashMap<LocalCollection<?>, RemoteCollection<?>>();
+				LocalCollection<?> database = new LocalAddressBook(account, provider, settings);
+				RemoteCollection<?> dav = new CardDavAddressBook(httpClient, addressBookURL, userName, password, preemptive);
 				
-				for (LocalCalendar calendar : LocalCalendar.findAll(account, provider)) {
-					RemoteCollection<?> dav = new CalDavCalendar(httpClient, calendar.getUrl(), userName, password, preemptive);
-					map.put(calendar, dav);
-				}
+				Map<LocalCollection<?>, RemoteCollection<?>> map = new HashMap<LocalCollection<?>, RemoteCollection<?>>();
+				map.put(database, dav);
+				
 				return map;
-			} catch (RemoteException ex) {
-				Log.e(TAG, "Couldn't find local calendars", ex);
 			} catch (URISyntaxException ex) {
-				Log.e(TAG, "Couldn't build calendar URI", ex);
+				Log.e(TAG, "Couldn't build address book URI", ex);
 			}
 			
 			return null;

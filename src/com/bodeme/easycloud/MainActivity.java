@@ -7,6 +7,8 @@
  ******************************************************************************/
 package com.bodeme.easycloud;
 
+import com.bodeme.easycloud.syncadapter.GeneralSettingsActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,7 +21,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 import at.bitfire.davdroid.Constants;
-import at.bitfire.davdroid.syncadapter.GeneralSettingsActivity;
 
 public class MainActivity extends Activity {
 

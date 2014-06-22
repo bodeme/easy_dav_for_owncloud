@@ -39,6 +39,8 @@ import net.fortuna.ical4j.model.property.Status;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.bodeme.easycloud.syncadapter.ServerInfo;
+
 import android.accounts.Account;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -60,7 +62,6 @@ import android.provider.CalendarContract.Events;
 import android.provider.CalendarContract.Reminders;
 import android.provider.ContactsContract;
 import android.util.Log;
-import at.bitfire.davdroid.syncadapter.ServerInfo;
 
 /**
  * Represents a locally stored calendar, containing Events.

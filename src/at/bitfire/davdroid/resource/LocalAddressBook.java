@@ -19,7 +19,6 @@ import java.util.Locale;
 import java.util.Set;
 
 import lombok.Cleanup;
-
 import android.accounts.Account;
 import android.content.ContentProviderClient;
 import android.content.ContentProviderOperation;
@@ -50,6 +49,8 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 
+import com.bodeme.easycloud.syncadapter.AccountSettings;
+
 import ezvcard.parameter.AddressType;
 import ezvcard.parameter.EmailType;
 import ezvcard.parameter.ImppType;
@@ -60,8 +61,6 @@ import ezvcard.property.Birthday;
 import ezvcard.property.DateOrTimeProperty;
 import ezvcard.property.Impp;
 import ezvcard.property.Telephone;
-
-import at.bitfire.davdroid.syncadapter.AccountSettings;
 
 
 public class LocalAddressBook extends LocalCollection<Contact> {

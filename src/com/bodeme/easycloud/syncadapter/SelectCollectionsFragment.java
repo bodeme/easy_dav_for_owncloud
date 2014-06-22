@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package at.bitfire.davdroid.syncadapter;
+package com.bodeme.easycloud.syncadapter;
 
 import android.app.ListFragment;
 import android.os.Bundle;

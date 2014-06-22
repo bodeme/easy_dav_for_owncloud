@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 
+import com.bodeme.easycloud.syncadapter.DavSyncAdapter;
+
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -61,7 +63,6 @@ import net.fortuna.ical4j.util.UidGenerator;
 import android.text.format.Time;
 import android.util.Log;
 import at.bitfire.davdroid.Constants;
-import at.bitfire.davdroid.syncadapter.DavSyncAdapter;
 
 
 public class Event extends Resource {
