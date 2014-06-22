@@ -127,7 +127,7 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 		if(0 == typePosition) {
 			url += "remote.php/caldav/principals/"+username+"/";
 		} else {
-			url += "remote.php/carddav/addressbooks/"+username+"/default";
+			url += "remote.php/carddav/addressbooks/"+username+"/";
 		}
 		
 		args.putString(QueryServerDialogFragment.EXTRA_BASE_URL, URIUtils.sanitize(url));

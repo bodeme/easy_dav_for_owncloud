@@ -45,7 +45,7 @@
     <string name="html_main_info"><![CDATA[
        <h1>Willkommen bei [[app_name]]/[[app_version]]!</h1>
        
-       <p>Dieses Programm synchronisiert Ihre Kontakte und Kalender mit der [[service_name]]. Um das Programm zu verwenden, müssen Sie 
+       <p>Dieses Programm synchronisiert Ihre Kontakte und Kalender mit dem [[service_name]]. Um das Programm zu verwenden, müssen Sie 
        Ihr Kundenkonto in den Einstellungen hinzufügen. Die Kontakte/Termine werden dann automatisch in beide Richtungen synchronisiert.</p>
        
        <p>Wenn Sie CyanogenMod benutzen, muss die "Datenschutz"-Funktion für diese App deaktiviert sein, da sie sonst
