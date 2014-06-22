@@ -13,9 +13,9 @@ public class Constants {
 	/**
 	 * Set your ownCloud-URL in order to fixate this app to a ownCloud-instance. 
 	 */
-	public static final String OWNCLOUD_URL = null;
+	public static final String OWNCLOUD_URL = "https://www.cloudstaerke.de/";
 	
-	public static final String ACCOUNT_TYPE = "com.bodeme.easycloud";
+	public static final String ACCOUNT_TYPE = "com.bocombo.easycloud";
 	
 	public static final String
 		APP_NAME = "ownCloud Easy DAV",
