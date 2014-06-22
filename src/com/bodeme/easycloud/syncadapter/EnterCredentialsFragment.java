@@ -51,13 +51,6 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 				
 		// protocol selection spinner
 		textHttpWarning = (TextView) v.findViewById(R.id.http_warning);
-		
-		// Remove views for editing ownCloud-url, when constant is given
-		if(Constants.OWNCLOUD_URL != null) {
-			textUrl.setVisibility(View.GONE);
-			editURL.setVisibility(View.GONE);
-			textHttpWarning.setVisibility(View.GONE);
-		}
 
 		editURL = (EditText) v.findViewById(R.id.url);
 		editURL.addTextChangedListener(this);
@@ -67,6 +60,13 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 		
 		editPassword = (EditText) v.findViewById(R.id.password);
 		editPassword.addTextChangedListener(this);
+		
+		// Remove views for editing ownCloud-url, when constant is given
+		if(Constants.OWNCLOUD_URL != null) {
+			textUrl.setVisibility(View.GONE);
+			editURL.setVisibility(View.GONE);
+			textHttpWarning.setVisibility(View.GONE);
+		}
 		
 		// ownCloud Type
 		Spinner spnrType = (Spinner) v.findViewById(R.id.select_type);
