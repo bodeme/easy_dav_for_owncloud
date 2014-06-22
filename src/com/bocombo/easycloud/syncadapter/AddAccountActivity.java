@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package com.bodeme.easycloud.syncadapter;
+package com.bocombo.easycloud.syncadapter;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import at.bitfire.davdroid.Constants;
 
-import com.bodeme.easycloud.R;
+import com.bocombo.easycloud.R;
 
 public class AddAccountActivity extends Activity {
 

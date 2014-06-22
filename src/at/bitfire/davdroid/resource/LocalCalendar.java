@@ -39,7 +39,7 @@ import net.fortuna.ical4j.model.property.Status;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.bodeme.easycloud.syncadapter.ServerInfo;
+import com.bocombo.easycloud.syncadapter.ServerInfo;
 
 import android.accounts.Account;
 import android.annotation.SuppressLint;

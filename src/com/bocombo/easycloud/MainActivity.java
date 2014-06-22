@@ -6,9 +6,9 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package com.bodeme.easycloud;
+package com.bocombo.easycloud;
 
-import com.bodeme.easycloud.syncadapter.GeneralSettingsActivity;
+import com.bocombo.easycloud.syncadapter.GeneralSettingsActivity;
 
 import android.app.Activity;
 import android.content.Intent;

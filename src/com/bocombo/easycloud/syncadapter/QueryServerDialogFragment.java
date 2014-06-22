@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package com.bodeme.easycloud.syncadapter;
+package com.bocombo.easycloud.syncadapter;
 
 import java.io.IOException;
 import java.net.URI;
@@ -33,7 +33,7 @@ import at.bitfire.davdroid.webdav.WebDavResource;
 import ch.boye.httpclientandroidlib.HttpException;
 import ch.boye.httpclientandroidlib.impl.client.CloseableHttpClient;
 
-import com.bodeme.easycloud.R;
+import com.bocombo.easycloud.R;
 
 public class QueryServerDialogFragment extends DialogFragment implements LoaderCallbacks<ServerInfo> {
 	private static final String TAG = "davdroid.QueryServerDialogFragment";

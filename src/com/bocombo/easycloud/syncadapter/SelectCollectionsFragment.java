@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package com.bodeme.easycloud.syncadapter;
+package com.bocombo.easycloud.syncadapter;
 
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -20,7 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.bodeme.easycloud.R;
+import com.bocombo.easycloud.R;
 
 public class SelectCollectionsFragment extends ListFragment {
 	public static final String KEY_SERVER_INFO = "server_info";

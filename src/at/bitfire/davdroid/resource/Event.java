@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 
-import com.bodeme.easycloud.syncadapter.DavSyncAdapter;
+import com.bocombo.easycloud.syncadapter.DavSyncAdapter;
 
 import lombok.Getter;
 import lombok.NonNull;

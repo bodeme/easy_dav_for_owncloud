@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package com.bodeme.easycloud.syncadapter;
+package com.bocombo.easycloud.syncadapter;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,7 +36,7 @@ import android.widget.TextView;
 import at.bitfire.davdroid.Constants;
 import at.bitfire.davdroid.URIUtils;
 
-import com.bodeme.easycloud.R;
+import com.bocombo.easycloud.R;
 
 public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 	TextView textHttpWarning, textUrl;

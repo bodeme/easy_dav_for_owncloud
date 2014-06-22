@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package com.bodeme.easycloud.syncadapter;
+package com.bocombo.easycloud.syncadapter;
 
 import lombok.Getter;
 import android.content.Context;
@@ -17,7 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ListAdapter;
 
-import com.bodeme.easycloud.R;
+import com.bocombo.easycloud.R;
 
 public class SelectCollectionsAdapter extends BaseAdapter implements ListAdapter {
 	final static int TYPE_ADDRESS_BOOKS_HEADING = 0,

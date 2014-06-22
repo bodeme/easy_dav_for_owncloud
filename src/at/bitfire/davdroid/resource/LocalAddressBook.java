@@ -49,7 +49,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.WordUtils;
 
-import com.bodeme.easycloud.syncadapter.AccountSettings;
+import com.bocombo.easycloud.syncadapter.AccountSettings;
 
 import ezvcard.parameter.AddressType;
 import ezvcard.parameter.EmailType;

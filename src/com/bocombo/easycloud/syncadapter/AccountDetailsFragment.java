@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package com.bodeme.easycloud.syncadapter;
+package com.bocombo.easycloud.syncadapter;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -29,7 +29,7 @@ import android.widget.Toast;
 import at.bitfire.davdroid.Constants;
 import at.bitfire.davdroid.resource.LocalCalendar;
 
-import com.bodeme.easycloud.R;
+import com.bocombo.easycloud.R;
 
 public class AccountDetailsFragment extends Fragment implements TextWatcher {
 	public static final String KEY_SERVER_INFO = "server_info";
