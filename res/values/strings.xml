@@ -6,7 +6,7 @@
     <string name="menu_settings">Settings</string>
     
     <!-- Do not forget to set correct accounttype also in Constants.java -->
-    <string name="accountType">com.bodeme.easycloud</string>
+    <string name="accountType">com.bocombo.cloud</string>
 
     <string name="type">Typ:</string>
 
