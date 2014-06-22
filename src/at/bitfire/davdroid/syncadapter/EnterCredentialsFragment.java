@@ -31,51 +31,54 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import at.bitfire.davdroid.R;
+import at.bitfire.davdroid.Constants;
 import at.bitfire.davdroid.URIUtils;
 
+import com.bodeme.easycloud.R;
+
 public class EnterCredentialsFragment extends Fragment implements TextWatcher {
-	String protocol;
-	
-	TextView textHttpWarning;
-	EditText editBaseURL, editUserName, editPassword;
-	CheckBox checkboxPreemptive;
+	TextView textHttpWarning, textUrl;
+	EditText editUserName, editPassword, editURL;
 	Button btnNext;
-	
+	int typePosition;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.enter_credentials, container, false);
-		
+
+		textUrl = (TextView) v.findViewById(R.id.text_url);
+		editURL = (EditText) v.findViewById(R.id.url);
+				
 		// protocol selection spinner
 		textHttpWarning = (TextView) v.findViewById(R.id.http_warning);
 		
-		Spinner spnrProtocol = (Spinner) v.findViewById(R.id.select_protocol);
-		spnrProtocol.setOnItemSelectedListener(new OnItemSelectedListener() {
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-				protocol = parent.getAdapter().getItem(position).toString();
-				textHttpWarning.setVisibility(protocol.equals("https://") ? View.GONE : View.VISIBLE);
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				protocol = null;
-			}
-		});
-		spnrProtocol.setSelection(1);	// HTTPS
-
-		// other input fields
-		editBaseURL = (EditText) v.findViewById(R.id.baseURL);
-		editBaseURL.addTextChangedListener(this);
-		
+		// Remove views for editing ownCloud-url, when constant is given
+		if(Constants.OWNCLOUD_URL != null) {
+			textUrl.setVisibility(View.GONE);
+			editURL.setVisibility(View.GONE);
+			textHttpWarning.setVisibility(View.GONE);
+		}
+				
 		editUserName = (EditText) v.findViewById(R.id.userName);
 		editUserName.addTextChangedListener(this);
 		
 		editPassword = (EditText) v.findViewById(R.id.password);
 		editPassword.addTextChangedListener(this);
 		
-		checkboxPreemptive = (CheckBox) v.findViewById(R.id.auth_preemptive);
+		// ownCloud Type
+		Spinner spnrType = (Spinner) v.findViewById(R.id.select_type);
+		spnrType.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				typePosition = position;
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				typePosition = 0;
+			}
+		});
+		spnrType.setSelection(0);
 		
 		// hook into action bar
 		setHasOptionsMenu(true);
@@ -105,11 +108,28 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 		
 		Bundle args = new Bundle();
 		
-		String host_path = editBaseURL.getText().toString();
-		args.putString(QueryServerDialogFragment.EXTRA_BASE_URL, URIUtils.sanitize(protocol + host_path));
-		args.putString(QueryServerDialogFragment.EXTRA_USER_NAME, editUserName.getText().toString());
+		String url;
+		String username = editUserName.getText().toString();
+		if(Constants.OWNCLOUD_URL == null) {
+			url = editURL.getText().toString();
+		} else {
+			url = Constants.OWNCLOUD_URL;
+		}
+		
+		if(url.charAt(url.length() - 1) != '/') {
+			url = url + "/";
+		}
+		
+		if(0 == typePosition) {
+			url += "remote.php/caldav/principals/"+username+"/";
+		} else {
+			url += "remote.php/carddav/addressbooks/"+username+"/default";
+		}
+		
+		args.putString(QueryServerDialogFragment.EXTRA_BASE_URL, URIUtils.sanitize(url));
+		args.putString(QueryServerDialogFragment.EXTRA_USER_NAME, username);
 		args.putString(QueryServerDialogFragment.EXTRA_PASSWORD, editPassword.getText().toString());
-		args.putBoolean(QueryServerDialogFragment.EXTRA_AUTH_PREEMPTIVE, checkboxPreemptive.isChecked());
+		args.putBoolean(QueryServerDialogFragment.EXTRA_AUTH_PREEMPTIVE, true);
 		
 		DialogFragment dialog = new QueryServerDialogFragment();
 		dialog.setArguments(args);
@@ -126,14 +146,16 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 			editPassword.getText().length() > 0;
 
 		// check host name
-		try {
-			URI uri = new URI(URIUtils.sanitize(protocol + editBaseURL.getText().toString()));
-			if (StringUtils.isBlank(uri.getHost()))
+		if(Constants.OWNCLOUD_URL == null) {
+			try {
+				URI uri = new URI(URIUtils.sanitize(editURL.getText().toString()));
+				if (StringUtils.isBlank(uri.getHost()))
+					ok = false;
+			} catch (URISyntaxException e) {
 				ok = false;
-		} catch (URISyntaxException e) {
-			ok = false;
+			}
 		}
-			
+		
 		MenuItem item = menu.findItem(R.id.next);
 		item.setEnabled(ok);
 	}
@@ -145,6 +167,13 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		getActivity().invalidateOptionsMenu();
+
+		if(Constants.OWNCLOUD_URL == null) {
+			String url = editURL.getText().toString();
+			boolean isHttps = (url.length() >= 8 && url.substring(0,  8).equals("https://"));
+			
+			textHttpWarning.setVisibility(isHttps ? View.GONE : View.VISIBLE);
+		}
 	}
 
 	@Override

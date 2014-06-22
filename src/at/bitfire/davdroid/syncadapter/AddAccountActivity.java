@@ -15,7 +15,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import at.bitfire.davdroid.Constants;
-import at.bitfire.davdroid.R;
+
+import com.bodeme.easycloud.R;
 
 public class AddAccountActivity extends Activity {
 

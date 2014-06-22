@@ -16,7 +16,8 @@ import android.preference.PreferenceFragment;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import at.bitfire.davdroid.R;
+
+import com.bodeme.easycloud.R;
 
 public class GeneralSettingsActivity extends Activity {
 	final static String URL_REPORT_ISSUE = "https://github.com/rfc2822/davdroid/blob/master/CONTRIBUTING.md"; 

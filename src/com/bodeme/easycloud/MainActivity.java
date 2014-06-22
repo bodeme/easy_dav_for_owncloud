@@ -5,7 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.gnu.org/licenses/gpl.html
  ******************************************************************************/
-package at.bitfire.davdroid;
+package com.bodeme.easycloud;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,8 +17,8 @@ import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
+import at.bitfire.davdroid.Constants;
 import at.bitfire.davdroid.syncadapter.GeneralSettingsActivity;
 
 public class MainActivity extends Activity {
@@ -28,16 +28,13 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_main);
-		
-		TextView tvWorkaround = (TextView)findViewById(R.id.text_workaround);
-		if (fromPlayStore()) {
-			tvWorkaround.setVisibility(View.VISIBLE);
-			tvWorkaround.setText(Html.fromHtml(getString(R.string.html_main_workaround)));
-		    tvWorkaround.setMovementMethod(LinkMovementMethod.getInstance());
-		}
-		
+		String info = getString(R.string.html_main_info)
+				.replace("[[app_name]]", getString(R.string.app_name))
+				.replace("[[version]]", "" + Constants.APP_VERSION)
+				.replace("[[service_name]]", getString(R.string.service_name));
+			
 		TextView tvInfo = (TextView)findViewById(R.id.text_info);
-		tvInfo.setText(Html.fromHtml(getString(R.string.html_main_info, Constants.APP_VERSION)));
+		tvInfo.setText(Html.fromHtml(info));
 		tvInfo.setMovementMethod(LinkMovementMethod.getInstance());
 	}
 
@@ -68,14 +65,5 @@ public class MainActivity extends Activity {
 		Intent intent = new Intent(Intent.ACTION_VIEW);
 		intent.setData(Uri.parse(Constants.WEB_URL_HELP + "&pk_kwd=main-activity"));
 		startActivity(intent);
-	}
-	
-	
-	private boolean fromPlayStore() {
-		try {
-			return "com.android.vending".equals(getPackageManager().getInstallerPackageName("at.bitfire.davdroid"));
-		} catch(IllegalArgumentException e) {
-		}
-		return false;
 	}
 }

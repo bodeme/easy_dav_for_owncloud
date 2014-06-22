@@ -27,8 +27,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import at.bitfire.davdroid.Constants;
-import at.bitfire.davdroid.R;
 import at.bitfire.davdroid.resource.LocalCalendar;
+
+import com.bodeme.easycloud.R;
 
 public class AccountDetailsFragment extends Fragment implements TextWatcher {
 	public static final String KEY_SERVER_INFO = "server_info";

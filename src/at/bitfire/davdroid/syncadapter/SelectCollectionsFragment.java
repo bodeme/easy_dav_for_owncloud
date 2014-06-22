@@ -19,7 +19,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import at.bitfire.davdroid.R;
+
+import com.bodeme.easycloud.R;
 
 public class SelectCollectionsFragment extends ListFragment {
 	public static final String KEY_SERVER_INFO = "server_info";

@@ -25,7 +25,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import at.bitfire.davdroid.R;
 import at.bitfire.davdroid.webdav.DavException;
 import at.bitfire.davdroid.webdav.DavHttpClient;
 import at.bitfire.davdroid.webdav.DavIncapableException;
@@ -33,6 +32,8 @@ import at.bitfire.davdroid.webdav.HttpPropfind.Mode;
 import at.bitfire.davdroid.webdav.WebDavResource;
 import ch.boye.httpclientandroidlib.HttpException;
 import ch.boye.httpclientandroidlib.impl.client.CloseableHttpClient;
+
+import com.bodeme.easycloud.R;
 
 public class QueryServerDialogFragment extends DialogFragment implements LoaderCallbacks<ServerInfo> {
 	private static final String TAG = "davdroid.QueryServerDialogFragment";

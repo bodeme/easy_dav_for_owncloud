@@ -3,8 +3,8 @@
     
     <PreferenceScreen android:title="@string/davdroid_help" >
         <intent
-            android:targetPackage="at.bitfire.davdroid"
-            android:targetClass="at.bitfire.davdroid.MainActivity"
+            android:targetPackage="com.bodeme.easycloud"
+            android:targetClass="com.bodeme.easycloud.MainActivity"
             android:action="ACTION_VIEW" />
     </PreferenceScreen>
 
@@ -13,8 +13,8 @@
     
     <PreferenceScreen android:title="@string/debug_settings">
         <intent
-            android:targetPackage="at.bitfire.davdroid"
-            android:targetClass="at.bitfire.davdroid.syncadapter.GeneralSettingsActivity"
+            android:targetPackage="com.bodeme.easycloud"
+            android:targetClass="com.bodeme.easycloud.syncadapter.GeneralSettingsActivity"
             android:action="ACTION_VIEW" />
     </PreferenceScreen>
     
