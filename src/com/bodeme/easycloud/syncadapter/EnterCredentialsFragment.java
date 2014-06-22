@@ -18,6 +18,7 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -47,7 +48,6 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 		View v = inflater.inflate(R.layout.enter_credentials, container, false);
 
 		textUrl = (TextView) v.findViewById(R.id.text_url);
-		editURL = (EditText) v.findViewById(R.id.url);
 				
 		// protocol selection spinner
 		textHttpWarning = (TextView) v.findViewById(R.id.http_warning);
@@ -58,7 +58,10 @@ public class EnterCredentialsFragment extends Fragment implements TextWatcher {
 			editURL.setVisibility(View.GONE);
 			textHttpWarning.setVisibility(View.GONE);
 		}
-				
+
+		editURL = (EditText) v.findViewById(R.id.url);
+		editURL.addTextChangedListener(this);
+		
 		editUserName = (EditText) v.findViewById(R.id.userName);
 		editUserName.addTextChangedListener(this);
 		
