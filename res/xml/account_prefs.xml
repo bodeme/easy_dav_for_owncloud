@@ -3,8 +3,8 @@
     
     <PreferenceScreen android:title="@string/davdroid_help" >
         <intent
-            android:targetPackage="com.bodeme.easycloud"
-            android:targetClass="com.bodeme.easycloud.MainActivity"
+            android:targetPackage="com.bocombo.easycloud"
+            android:targetClass="com.bocombo.easycloud.MainActivity"
             android:action="ACTION_VIEW" />
     </PreferenceScreen>
 
@@ -13,8 +13,8 @@
     
     <PreferenceScreen android:title="@string/debug_settings">
         <intent
-            android:targetPackage="com.bodeme.easycloud"
-            android:targetClass="com.bodeme.easycloud.syncadapter.GeneralSettingsActivity"
+            android:targetPackage="com.bocombo.easycloud"
+            android:targetClass="com.bocombo.easycloud.syncadapter.GeneralSettingsActivity"
             android:action="ACTION_VIEW" />
     </PreferenceScreen>
     
