@@ -4,9 +4,6 @@
     <string name="app_name">ownCloud Easy DAV</string>
     <string name="service_name">ownCloud</string>
     <string name="menu_settings">Settings</string>
-    
-    <!-- Do not forget to set correct accounttype also in Constants.java -->
-    <string name="accountType">com.bocombo.cloud</string>
 
     <string name="type">Typ:</string>
 
