@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bodeme.easycloud"
-    android:versionCode="101"
-    android:versionName="1.0.1/beta" android:installLocation="internalOnly">
+    android:versionCode="102"
+    android:versionName="1.0.2/beta" android:installLocation="internalOnly">
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -16,6 +16,12 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
+    <supports-screens 
+	    android:smallScreens="true"
+		android:normalScreens="true" 
+		android:largeScreens="true"
+		android:anyDensity="true" />
+    	
     <application
         android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
