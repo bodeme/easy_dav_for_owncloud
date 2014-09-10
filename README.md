@@ -1,7 +1,7 @@
 
-ownCloud Easy DAV
-=================
-ownCloud Easy DAV is based on DAVdroid. It's mainfocus is an easy sync-configuration for ownCloud on Android-devices. As a user you only
+Easy DAV for ownCloud
+=====================
+Easy DAV for ownCloud is based on DAVdroid. It's mainfocus is an easy sync-configuration for ownCloud on Android-devices. As a user you only
 need to know the main ownCloud-URL of your installation, the CardDAV- and CalDAV links are generated automatically.
  
 Twitter: [@bodeme](https://twitter.com/bodeme)
@@ -14,7 +14,7 @@ The main work was done by the DAVdroid-developers. So please <a href="http://dav
 
 License
 =======
-ownCloud Easy DAV is licensed under the [GPLv3 License](COPYING).
+Easy DAV for ownCloud is licensed under the [GPLv3 License](COPYING).
 
 
 USED APPS AND LIBRARIES
