@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ownCloud Easy DAV</string>
+    <string name="app_name">Easy DAV for ownCloud</string>
     <string name="service_name">ownCloud</string>
     <string name="menu_settings">Settings</string>
 
@@ -53,7 +53,7 @@
        
        <h1>Open-Source</h1>
 	   <p>[[app_name]] basiert auf der Open-Source Software DAVdroid (GPLv3). Der Quellcode ist auf
-	   <a href="https://github.com/bodeme/owncloud_easy_dav">Github zu finden</a>, der von DAVdroid ist auch
+	   <a href="https://github.com/bodeme/easy_dav_for_owncloud">Github zu finden</a>, der von DAVdroid ist auch
 	   <a href="https://github.com/rfc2822/davdroid">auf Github verfügbar</a>.</p>
 	   
 	   <p>Wenn Sie die Entwickler von DAVdroid unterstützen so möchten, so können Sie
@@ -67,6 +67,7 @@
 	   General Public License Version 3</a>, wie von der Free Software Foundation veröffentlicht, weitergeben und/oder modifizieren.
 	   Sofern Google Play oder Samsung Store andere Bedingungen benötigen, gelten für über den jeweiligen Markt heruntergeladene
 	   Apps diese Bedingungen.</p>
+	   <p>"ownCloud" ist eine Marke der "ownCloud, Inc". Bei dieser App handelt es sich nicht um eine offizielle App von "ownCloud, Inc".</p>
 	   	   
 	   <h2>Verwendete Bibliotheken</h2>
 	   <p>

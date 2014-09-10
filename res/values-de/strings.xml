@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_name">Easy DAV für ownCloud</string>
     <string name="http_warning">Ohne Verschlüsselung (HTTPS) können Ihre Zugangsdaten, Kontakte und Termine leicht abgefangen werden.</string>
     
     <string-array name="owncloud_types">
