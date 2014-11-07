@@ -109,7 +109,8 @@ public abstract class DavSyncAdapter extends AbstractThreadedSyncAdapter impleme
 			SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
 			httpClient = DavHttpClient.create(
 				settings.getBoolean(Constants.SETTING_DISABLE_COMPRESSION, false),
-				settings.getBoolean(Constants.SETTING_NETWORK_LOGGING, false)
+				settings.getBoolean(Constants.SETTING_NETWORK_LOGGING, false),
+				!settings.getBoolean(Constants.IGNORE_SSL_ERRORS, false)
 			);
 		}
 		

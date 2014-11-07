@@ -18,13 +18,16 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import at.bitfire.davdroid.Constants;
 import at.bitfire.davdroid.webdav.DavException;
 import at.bitfire.davdroid.webdav.DavHttpClient;
 import at.bitfire.davdroid.webdav.DavIncapableException;
@@ -111,9 +114,11 @@ public class QueryServerDialogFragment extends DialogFragment implements LoaderC
 				args.getString(EXTRA_PASSWORD),
 				args.getBoolean(EXTRA_AUTH_PREEMPTIVE)
 			);
-			
+
+			SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getContext());
+						
 			// disable compression and enable network logging for debugging purposes 
-			CloseableHttpClient httpClient = DavHttpClient.create(true, true);
+			CloseableHttpClient httpClient = DavHttpClient.create(true, true, !settings.getBoolean(Constants.IGNORE_SSL_ERRORS, false));
 			
 			try {
 				// (1/5) detect capabilities

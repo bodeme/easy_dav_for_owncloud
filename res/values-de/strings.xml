@@ -53,5 +53,8 @@
     <string name="network_logging_enabled">Der gesamte Netzwerkverkehr wird in den Android-Logs mitgeschrieben (zur Fehlersuche)</string>
     <string name="network_logging_disabled">Netzwerkverkehr wird nicht aufgezeichnet</string>
     <string name="report_an_issue">Problem berichten</string>
-    
+   
+    <string name="ssl_errors">Ignoriere SSL Fehler</string>
+    <string name="ignore_ssl_errors">SSL Fehler werden ignoriert</string>
+    <string name="do_not_ignore_ssl_errors">SSL Fehler werden nicht ignoriert</string> 
 </resources>

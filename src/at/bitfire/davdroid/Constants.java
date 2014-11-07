@@ -22,5 +22,6 @@ public class Constants {
 		APP_VERSION = "1.0-beta",
 		WEB_URL_HELP = "https://www.bocombo.de/webhosting/gratis-cloudspeicher/easy-dav/",
 		SETTING_DISABLE_COMPRESSION = "disable_compression",
-		SETTING_NETWORK_LOGGING = "network_logging";
+		SETTING_NETWORK_LOGGING = "network_logging",
+		IGNORE_SSL_ERRORS = "ignore_ssl_errors";
 }

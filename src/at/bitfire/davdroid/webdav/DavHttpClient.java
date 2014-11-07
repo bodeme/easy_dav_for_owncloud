@@ -7,13 +7,24 @@
  ******************************************************************************/
 package at.bitfire.davdroid.webdav;
 
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
+
 import android.util.Log;
 import at.bitfire.davdroid.Constants;
 import ch.boye.httpclientandroidlib.client.config.RequestConfig;
 import ch.boye.httpclientandroidlib.config.Registry;
 import ch.boye.httpclientandroidlib.config.RegistryBuilder;
 import ch.boye.httpclientandroidlib.conn.socket.ConnectionSocketFactory;
+import ch.boye.httpclientandroidlib.conn.socket.LayeredConnectionSocketFactory;
 import ch.boye.httpclientandroidlib.conn.socket.PlainConnectionSocketFactory;
+import ch.boye.httpclientandroidlib.conn.ssl.AllowAllHostnameVerifier;
+import ch.boye.httpclientandroidlib.conn.ssl.SSLConnectionSocketFactory;
+import ch.boye.httpclientandroidlib.conn.ssl.SSLContexts;
 import ch.boye.httpclientandroidlib.impl.client.CloseableHttpClient;
 import ch.boye.httpclientandroidlib.impl.client.HttpClientBuilder;
 import ch.boye.httpclientandroidlib.impl.client.HttpClients;
@@ -24,14 +35,9 @@ public class DavHttpClient {
 	private final static String TAG = "davdroid.DavHttpClient";
 	
 	private final static RequestConfig defaultRqConfig;
-	private final static Registry<ConnectionSocketFactory> socketFactoryRegistry;
+	private static Registry<ConnectionSocketFactory> socketFactoryRegistry;
 		
 	static {
-		socketFactoryRegistry =	RegistryBuilder.<ConnectionSocketFactory> create()
-				.register("http", PlainConnectionSocketFactory.getSocketFactory())
-				.register("https", TlsSniSocketFactory.INSTANCE)
-				.build();
-		
 		// use request defaults from AndroidHttpClient
 		defaultRqConfig = RequestConfig.copy(RequestConfig.DEFAULT)
 				.setConnectTimeout(20*1000)
@@ -41,18 +47,23 @@ public class DavHttpClient {
 	}
 
 
-	public static CloseableHttpClient create(boolean disableCompression, boolean logTraffic) {
+	public static CloseableHttpClient create(boolean disableCompression, boolean logTraffic, boolean strict) {
+		socketFactoryRegistry =	RegistryBuilder.<ConnectionSocketFactory> create()
+				.register("http", PlainConnectionSocketFactory.getSocketFactory())
+				.register("https", strict ? TlsSniSocketFactory.INSTANCE : new SSLConnectionSocketFactory(getSSLContext(), new AllowAllHostnameVerifier()))
+				.build();
+
 		PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
 		// limits per DavHttpClient (= per DavSyncAdapter extends AbstractThreadedSyncAdapter)
 		connectionManager.setMaxTotal(3);				// max.  3 connections in total
 		connectionManager.setDefaultMaxPerRoute(2);		// max.  2 connections per host
-		
+
 		HttpClientBuilder builder = HttpClients.custom()
 				.useSystemProperties()
 				.setConnectionManager(connectionManager)
 				.setDefaultRequestConfig(defaultRqConfig)
 				.setRetryHandler(DavHttpRequestRetryHandler.INSTANCE)
-				.setUserAgent("DAVdroid/" + Constants.APP_VERSION)
+				.setUserAgent("easydav/" + Constants.APP_VERSION)
 				.disableCookieManagement();
 		
 		if (disableCompression) {
@@ -66,6 +77,43 @@ public class DavHttpClient {
 		ManagedHttpClientConnectionFactory.INSTANCE.log.enableDebug(logTraffic);
 
 		return builder.build();
+	}
+	
+	private static SSLContext mSSLContext;
+	private static SSLContext getSSLContext() {
+		if (mSSLContext == null) {
+			try {
+
+				mSSLContext = SSLContext.getInstance("TLS");
+					X509TrustManager tm = new X509TrustManager() {
+
+						@Override
+						public void checkClientTrusted(X509Certificate[] chain,
+								String authType) throws CertificateException {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public void checkServerTrusted(X509Certificate[] chain,
+								String authType) throws CertificateException {
+							// TODO Auto-generated method stub
+							
+						}
+
+						@Override
+						public X509Certificate[] getAcceptedIssuers() {
+							// TODO Auto-generated method stub
+							return null;
+						}
+					};
+					mSSLContext.init(null, new TrustManager[] { tm }, null);
+				}
+			catch (Exception ex) {
+				return null;
+			}
+		}
+		return mSSLContext;
 	}
 
 }

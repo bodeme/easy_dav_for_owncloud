@@ -97,4 +97,8 @@
     <string name="network_logging_disabled">Network traffic is not being logged</string>
     <string name="report_an_issue">Report an issue</string>
 
+    <string name="ssl_errors">SSL errors</string>
+    <string name="ignore_ssl_errors">Ignore SSL errors</string>
+    <string name="do_not_ignore_ssl_errors">Do not ignore SSL errors</string>
+ 	
 </resources>
